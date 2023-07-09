@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 public class FactoryPokemon {
     private Gson gson = new Gson();
     // precisa ajeitar o scanner para pegar input separado por espaço
-    public Pokemon getPokemon(){
+    public Pokemon getPokemonComInput(){
         Scanner pegarInput = new Scanner(System.in);
         
         System.out.print("Digite o nome do pokémon: ");
@@ -36,6 +36,11 @@ public class FactoryPokemon {
         pegarInput.close();
         return new Pokemon(nome, numeroPokedex, tipos, nivel, golpes);
     }
+
+    public Pokemon getPokemonSemInput(String nome, int numeroPokedex, String[] tipos, int nivel, String[] golpes){
+        return new Pokemon(nome, numeroPokedex, tipos, nivel, golpes);
+    }
+
     public Pokemon desserializarJsonString(String serializado){
         return gson.fromJson(serializado, Pokemon.class);
     }

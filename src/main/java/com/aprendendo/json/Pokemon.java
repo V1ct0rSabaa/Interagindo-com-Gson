@@ -1,5 +1,7 @@
 package com.aprendendo.json;
 
+import java.util.Arrays;
+
 import com.aprendendo.json.exceptions.NivelException;
 
 public class Pokemon {
@@ -70,6 +72,17 @@ public class Pokemon {
 
     public void setGolpes(String[] golpes) {
         this.golpes = golpes;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Pokemon [nome=" + nome);
+        sb.append("numeroPokedex=" + numeroPokedex);
+        sb.append("tipos [nome=" + Arrays.toString(tipos));
+        sb.append("nivel [nome=" + nivel);
+        sb.append("golpes [nome=" + Arrays.toString(golpes) + "]");
+        return sb.toString();
     }
     
 }

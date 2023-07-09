@@ -8,11 +8,16 @@ public class App
     {
         String[] tipos = {"steel", "rock"};
         String[] golpes = {"Rock Tomb", "Iron Tail", "Earthquake", "Protect"};
-        Pokemon p1 = new Pokemon("Aggron", 306, tipos, 42, golpes);
+        FactoryPokemon factoryPokemon = new FactoryPokemon();
+        Pokemon p1 = factoryPokemon.getPokemonSemInput("Aggron", 306, tipos, 42, golpes);
         String serializado = OperacoesJson.serializarObjeto(p1);
-        FactoryPokemon fp = new FactoryPokemon();
         System.out.println(serializado);
-        Pokemon p2 = fp.getPokemon();
+
+    }
+
+    private static void criarObjectoComFormulario(){
+        FactoryPokemon factoryPokemon = new FactoryPokemon();
+        Pokemon p2 = factoryPokemon.getPokemonComInput();
         System.out.println(OperacoesJson.serializarObjeto(p2));
     }
 }

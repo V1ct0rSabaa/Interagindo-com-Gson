@@ -6,8 +6,10 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 
-public class OperacoesJson {
+public abstract class OperacoesJson {
     private static Gson gson = new Gson(); 
+    // documentação - https://github.com/google/gson/blob/main/UserGuide.md
+
     public static String serializarObjeto(Pokemon pokemon){
         return gson.toJson(pokemon);
     }
@@ -26,5 +28,23 @@ public class OperacoesJson {
                 System.out.println("ERRO, não foi possivel criar o arquivo json");
             }
         }
+    }
+
+    private void deserializarJsonParaWrapper(){
+        Short s = gson.fromJson("151", Short.class);
+        Integer i = gson.fromJson("10000", Integer.class);
+        Long l = gson.fromJson("123456789", Long.class);
+        Double d = gson.fromJson("553.2", Double.class);
+        Boolean bool = gson.fromJson("false", Boolean.class);
+        String str = gson.fromJson("\"abc\"", String.class);
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Short: " + s.toString());
+        sb.append("\nInteger: " + i.toString());
+        sb.append("\nLong: " + l.toString());
+        sb.append("\nDouble: " + d.toString());
+        sb.append("\nBoolean: " + bool.toString());
+        sb.append("\nString: " + str);
+        System.out.println(sb.toString());
     }
 }
